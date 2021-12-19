@@ -1,12 +1,13 @@
 import Map from "../components/Map";
 
-import { Tab, Tabs, ListGroup  } from "react-bootstrap";
+import { Tab, Tabs, ListGroup } from "react-bootstrap";
+import MapView from "../components/Map";
+import CardComponent from "../components/CardComponent";
 
 const HomeView = () => {
     return (
         <div className="body">
          <Map />
-         <h2 className="title">CHARGE-IT</h2>
         </div>
     )
 }

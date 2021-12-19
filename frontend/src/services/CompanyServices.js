@@ -14,7 +14,7 @@ export const getSingleCompanyFromApi = async (id) => {
 
 export const signupCompany = async (company) => {
     try {
-        const response = await axios.post(`${apiUrl}/auth/auth/`, company);
+        const response = await axios.post(`${apiUrl}/auth/signup/`, company);
         return response;
     } catch (error) {
         return error.response;

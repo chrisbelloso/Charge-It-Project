@@ -1,0 +1,9 @@
+.title1 {
+  font-size: 2rem;
+}
+
+.container {
+  display: flex !important;
+  margin: 20px auto;
+  padding: 0 !important;
+}
