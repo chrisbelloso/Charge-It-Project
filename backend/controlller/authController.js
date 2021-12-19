@@ -10,6 +10,7 @@ const getAllCompanies = async (req, res) => {
         if (companies.length === 0) {
             return res.status(400).json({ message: "Didn't find any companies" });
         }
+        return res.status(200).json(companies)
     } catch (error) {
         return res.status(500).json({ message: "Couldn't get the companies" });
     }
@@ -26,19 +27,20 @@ const getCompanyById = async (req, res) => {
 };
 
 const signUpCompany = async (req, res) => {
-    const { email } = req.body;
+    const { email, password } = req.body;
     const testEmail = await Company.findOne({ email });
     if (testEmail) {
-        return res.status(500).json({ message: "Email already in use" });
+        return res.status(500).json({ message: "Email already in use" })
     }
     const company = new Company(req.body);
     try {
         const salt = bcrypt.genSaltSync();
-        company.password = bcrypt.hashSync(req.body.password, salt);
+        company.password = bcrypt.hashSync(password, salt);
         company.save();
+        const token = await generateJwt(company._id);
         return res.status(201).json(company);
     } catch (error) {
-        return res.status(500).json({ message: "Couldn't create the user" });
+        return res.status(500).json({ message: "Couldn't create the user" })
     }
 };
 

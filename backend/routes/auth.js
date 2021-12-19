@@ -18,7 +18,7 @@ router.get("/", getAllCompanies);
 
 router.get("/company/:id", getCompanyById);
 
-router.post(
+router.post( [
     "/signup",
     check("name", "A name is required").not().isEmpty(),
     check("email", "A valid email is required").isEmail(),
@@ -29,8 +29,9 @@ router.post(
     check("adress", "An address is required").not().isEmpty(),
     
     validateFields,
-    signUpCompany
+     ], signUpCompany
 );
+
 
 router.post("/login", loginCompany);
 

@@ -19,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 // setup routes
+app.use("/api/auth", require("./routes/auth"))
 
 
 //start listening on server
